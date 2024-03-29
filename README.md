@@ -12,6 +12,10 @@ rails s
 
 Note: You may also need to run `rails db:migrate` if the db file has been purged.
 
+## Install Smithy CLI
+
+See: https://smithy.io/2.0/guides/smithy-cli/cli_installation.html
+
 ## Building the SDK
 
 Running `smithy build` will build the SDK into a build folder using the `smithy-build.json` configuration.
