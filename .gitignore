@@ -1,3 +1,5 @@
+classpath.json
+
 *.gem
 *.rbc
 /.config
