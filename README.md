@@ -18,7 +18,7 @@ See: https://smithy.io/2.0/guides/smithy-cli/cli_installation.html
 
 ## Building the SDK
 
-Running `smithy build` will build the SDK into a build folder using the `smithy-build.json` configuration.
+Running `smithy clean && smithy build` will build the SDK into a build folder using the `smithy-build.json` configuration.
 
 ## Install Dependencies
 
