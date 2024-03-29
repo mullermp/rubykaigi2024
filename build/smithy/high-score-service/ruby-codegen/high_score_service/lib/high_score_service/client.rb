@@ -166,10 +166,7 @@ module HighScoreService
     #   Some configurations cannot be overridden.
     # @return [Hearth::Output]
     # @example Request syntax with placeholder values
-    #   resp = client.list_high_scores(
-    #     next_token: 'nextToken',
-    #     max_results: 1
-    #   )
+    #   resp = client.list_high_scores()
     # @example Response structure
     #   resp.data #=> Types::ListHighScoresOutput
     #   resp.data.high_scores #=> Array<HighScoreAttributes>
@@ -179,7 +176,6 @@ module HighScoreService
     #   resp.data.high_scores[0].score #=> Integer
     #   resp.data.high_scores[0].created_at #=> Time
     #   resp.data.high_scores[0].updated_at #=> Time
-    #   resp.data.next_token #=> String
     def list_high_scores(params = {}, options = {})
       response_body = ::StringIO.new
       config = operation_config(options)

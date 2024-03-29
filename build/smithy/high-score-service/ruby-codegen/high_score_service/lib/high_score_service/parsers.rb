@@ -84,7 +84,6 @@ module HighScoreService
     class ListHighScores
       def self.parse(http_resp)
         data = Types::ListHighScoresOutput.new
-        data.next_token = http_resp.headers['nextToken']
         json = Hearth::JSON.parse(http_resp.body.read)
         data.high_scores = Parsers::HighScores.parse(json)
         data

@@ -71,8 +71,6 @@ module HighScoreService
         http_req.http_method = 'GET'
         http_req.append_path('/high_scores')
         params = Hearth::Query::ParamList.new
-        params['nextToken'] = input[:next_token].to_s unless input[:next_token].nil?
-        params['maxResults'] = input[:max_results].to_s unless input[:max_results].nil?
         http_req.append_query_param_list(params)
       end
     end

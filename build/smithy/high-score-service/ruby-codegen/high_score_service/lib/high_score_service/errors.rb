@@ -94,10 +94,6 @@ module HighScoreService
 
       # @return [Types::UnprocessableEntityError]
       attr_reader :data
-
-      def retryable?
-        true
-      end
     end
 
   end

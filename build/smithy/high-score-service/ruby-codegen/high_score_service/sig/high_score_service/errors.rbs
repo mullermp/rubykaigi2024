@@ -31,7 +31,6 @@ module HighScoreService
       def initialize: (http_resp: Hearth::HTTP::Response, **untyped kwargs) -> void
 
       attr_reader data: Types::UnprocessableEntityError
-      def retryable?: () -> true
     end
 
   end
