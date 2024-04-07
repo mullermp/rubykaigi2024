@@ -90,6 +90,7 @@
         "smithy.api#timestampFormat",
         "smithy.api#title",
         "smithy.api#trait",
+        "smithy.api#traitValidators",
         "smithy.api#uniqueItems",
         "smithy.api#unitType",
         "smithy.api#unstable",
