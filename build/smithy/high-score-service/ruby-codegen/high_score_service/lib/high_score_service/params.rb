@@ -89,7 +89,6 @@ module HighScoreService
         type = Types::GetHighScoreOutput.new
         Hearth::Validator.validate_unknown!(type, params, context: context) if params.is_a?(Hash)
         type.high_score = HighScoreAttributes.build(params[:high_score], context: "#{context}[:high_score]") unless params[:high_score].nil?
-        type.status = params[:status]
         type
       end
     end

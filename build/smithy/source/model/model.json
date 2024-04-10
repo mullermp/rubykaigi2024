@@ -142,13 +142,6 @@
                         "smithy.api#documentation": "The high score attributes",
                         "smithy.api#httpPayload": {}
                     }
-                },
-                "status": {
-                    "target": "smithy.api#String",
-                    "traits": {
-                        "smithy.api#documentation": "The status of the high score",
-                        "smithy.api#httpHeader": "Status"
-                    }
                 }
             },
             "traits": {

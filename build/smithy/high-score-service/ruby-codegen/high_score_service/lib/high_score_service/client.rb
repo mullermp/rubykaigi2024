@@ -134,7 +134,6 @@ module HighScoreService
     #   resp.data.high_score.score #=> Integer
     #   resp.data.high_score.created_at #=> Time
     #   resp.data.high_score.updated_at #=> Time
-    #   resp.data.status #=> String
     def get_high_score(params = {}, options = {})
       response_body = ::StringIO.new
       config = operation_config(options)

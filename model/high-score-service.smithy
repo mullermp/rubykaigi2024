@@ -61,7 +61,7 @@ structure HighScoreParams {
 //                matcher: {
 //                    errorType: "NotFoundError"
 //                }
-//            }
+//            },
 //            // Succeed when the response is successful.
 //            {
 //                state: "success",
@@ -90,10 +90,6 @@ structure GetHighScoreOutput {
     /// The high score attributes
     @httpPayload
     highScore: HighScoreAttributes,
-
-    /// The status of the high score
-    @httpHeader("Status")
-    status: String
 }
 
 /// Create a new high score

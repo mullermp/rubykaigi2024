@@ -74,7 +74,6 @@ module HighScoreService
       def self.validate!(input, context:)
         Hearth::Validator.validate_types!(input, Types::GetHighScoreOutput, context: context)
         HighScoreAttributes.validate!(input[:high_score], context: "#{context}[:high_score]") unless input[:high_score].nil?
-        Hearth::Validator.validate_types!(input[:status], ::String, context: "#{context}[:status]")
       end
     end
 

@@ -53,7 +53,6 @@ module HighScoreService
     class GetHighScore
       def self.parse(http_resp)
         data = Types::GetHighScoreOutput.new
-        data.status = http_resp.headers['Status']
         json = Hearth::JSON.parse(http_resp.body.read)
         data.high_score = Parsers::HighScoreAttributes.parse(json)
         data

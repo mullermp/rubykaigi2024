@@ -85,16 +85,11 @@ module HighScoreService
     # @!method initialize(params = {})
     #   @param [Hash] params
     #   @option params [HighScoreAttributes] :high_score
-    #   @option params [String] :status
     # @!attribute high_score
     #   The high score attributes
     #   @return [HighScoreAttributes]
-    # @!attribute status
-    #   The status of the high score
-    #   @return [String]
     GetHighScoreOutput = ::Struct.new(
       :high_score,
-      :status,
       keyword_init: true
     ) do
       include Hearth::Structure

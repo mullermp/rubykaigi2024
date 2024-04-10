@@ -38,7 +38,6 @@ module HighScoreService
     class GetHighScoreOutput < ::Struct[untyped]
       include Hearth::Structure
       attr_accessor high_score (): Types::HighScoreAttributes
-      attr_accessor status (): ::String
     end
 
     class HighScoreAttributes < ::Struct[untyped]
