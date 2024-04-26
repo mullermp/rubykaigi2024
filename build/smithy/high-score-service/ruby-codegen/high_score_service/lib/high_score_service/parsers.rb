@@ -21,22 +21,19 @@ module HighScoreService
       end
     end
 
-    # Operation Parser for CreateHighScore
     class CreateHighScore
       def self.parse(http_resp)
         data = Types::CreateHighScoreOutput.new
         data.location = http_resp.headers['Location']
-        json = Hearth::JSON.parse(http_resp.body.read)
-        data.high_score = Parsers::HighScoreAttributes.parse(json)
+        map = Hearth::JSON.parse(http_resp.body.read)
+        data.high_score = Parsers::HighScoreAttributes.parse(map)
         data
       end
     end
 
-    # Operation Parser for DeleteHighScore
     class DeleteHighScore
       def self.parse(http_resp)
         data = Types::DeleteHighScoreOutput.new
-        map = Hearth::JSON.parse(http_resp.body.read)
         data
       end
     end
@@ -49,12 +46,11 @@ module HighScoreService
       end
     end
 
-    # Operation Parser for GetHighScore
     class GetHighScore
       def self.parse(http_resp)
         data = Types::GetHighScoreOutput.new
-        json = Hearth::JSON.parse(http_resp.body.read)
-        data.high_score = Parsers::HighScoreAttributes.parse(json)
+        map = Hearth::JSON.parse(http_resp.body.read)
+        data.high_score = Parsers::HighScoreAttributes.parse(map)
         data
       end
     end
@@ -62,12 +58,12 @@ module HighScoreService
     class HighScoreAttributes
       def self.parse(map)
         data = Types::HighScoreAttributes.new
-        data.id = map['id']
-        data.game = map['game']
-        data.score = map['score']
+        data.id = map['id'] unless map['id'].nil?
+        data.game = map['game'] unless map['game'].nil?
+        data.score = map['score'] unless map['score'].nil?
         data.created_at = Time.parse(map['created_at']) if map['created_at']
         data.updated_at = Time.parse(map['updated_at']) if map['updated_at']
-        return data
+        data
       end
     end
 
@@ -79,12 +75,11 @@ module HighScoreService
       end
     end
 
-    # Operation Parser for ListHighScores
     class ListHighScores
       def self.parse(http_resp)
         data = Types::ListHighScoresOutput.new
-        json = Hearth::JSON.parse(http_resp.body.read)
-        data.high_scores = Parsers::HighScores.parse(json)
+        map = Hearth::JSON.parse(http_resp.body.read)
+        data.high_scores = Parsers::HighScores.parse(map)
         data
       end
     end
@@ -93,18 +88,17 @@ module HighScoreService
     class UnprocessableEntityError
       def self.parse(http_resp)
         data = Types::UnprocessableEntityError.new
-        json = Hearth::JSON.parse(http_resp.body.read)
-        data.errors = Parsers::AttributeErrors.parse(json)
+        map = Hearth::JSON.parse(http_resp.body.read)
+        data.errors = Parsers::AttributeErrors.parse(map)
         data
       end
     end
 
-    # Operation Parser for UpdateHighScore
     class UpdateHighScore
       def self.parse(http_resp)
         data = Types::UpdateHighScoreOutput.new
-        json = Hearth::JSON.parse(http_resp.body.read)
-        data.high_score = Parsers::HighScoreAttributes.parse(json)
+        map = Hearth::JSON.parse(http_resp.body.read)
+        data.high_score = Parsers::HighScoreAttributes.parse(map)
         data
       end
     end

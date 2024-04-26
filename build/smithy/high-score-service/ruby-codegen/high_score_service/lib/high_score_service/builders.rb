@@ -15,8 +15,6 @@ module HighScoreService
       def self.build(http_req, input:)
         http_req.http_method = 'POST'
         http_req.append_path('/high_scores')
-        params = Hearth::Query::ParamList.new
-        http_req.append_query_param_list(params)
 
         http_req.headers['Content-Type'] = 'application/json'
         data = {}
@@ -36,8 +34,6 @@ module HighScoreService
             id: Hearth::HTTP.uri_escape(input[:id].to_s)
           )
         )
-        params = Hearth::Query::ParamList.new
-        http_req.append_query_param_list(params)
       end
     end
 
@@ -52,8 +48,6 @@ module HighScoreService
             id: Hearth::HTTP.uri_escape(input[:id].to_s)
           )
         )
-        params = Hearth::Query::ParamList.new
-        http_req.append_query_param_list(params)
       end
     end
 
@@ -70,8 +64,6 @@ module HighScoreService
       def self.build(http_req, input:)
         http_req.http_method = 'GET'
         http_req.append_path('/high_scores')
-        params = Hearth::Query::ParamList.new
-        http_req.append_query_param_list(params)
       end
     end
 
@@ -86,8 +78,6 @@ module HighScoreService
             id: Hearth::HTTP.uri_escape(input[:id].to_s)
           )
         )
-        params = Hearth::Query::ParamList.new
-        http_req.append_query_param_list(params)
 
         http_req.headers['Content-Type'] = 'application/json'
         data = {}

@@ -342,18 +342,20 @@
             }
         },
         "smithy.ruby#TestType": {
-            "type": "string",
-            "traits": {
-                "smithy.api#enum": [
-                    {
-                        "value": "request",
-                        "name": "REQUEST"
-                    },
-                    {
-                        "value": "response",
-                        "name": "RESPONSE"
+            "type": "enum",
+            "members": {
+                "REQUEST": {
+                    "target": "smithy.api#Unit",
+                    "traits": {
+                        "smithy.api#enumValue": "request"
                     }
-                ]
+                },
+                "RESPONSE": {
+                    "target": "smithy.api#Unit",
+                    "traits": {
+                        "smithy.api#enumValue": "response"
+                    }
+                }
             }
         },
         "smithy.ruby#skipTest": {
@@ -393,21 +395,6 @@
                 "target": "smithy.ruby.protocols#ErrorMessages"
             }
         },
-        "smithy.ruby.protocols#ErrorLocation": {
-            "type": "string",
-            "traits": {
-                "smithy.api#enum": [
-                    {
-                        "value": "status_code",
-                        "name": "STATUS_CODE"
-                    },
-                    {
-                        "value": "header",
-                        "name": "HEADER"
-                    }
-                ]
-            }
-        },
         "smithy.ruby.protocols#ErrorMessages": {
             "type": "list",
             "member": {
@@ -441,8 +428,8 @@
         "smithy.ruby.protocols#railsJson": {
             "type": "structure",
             "members": {
-                "errorLocation": {
-                    "target": "smithy.ruby.protocols#ErrorLocation"
+                "errorHeader": {
+                    "target": "smithy.api#String"
                 }
             },
             "traits": {

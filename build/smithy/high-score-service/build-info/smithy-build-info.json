@@ -136,7 +136,6 @@
         "smithy.api#default",
         "smithy.api#deprecated",
         "smithy.api#documentation",
-        "smithy.api#enum",
         "smithy.api#enumValue",
         "smithy.api#error",
         "smithy.api#externalDocumentation",

@@ -15,26 +15,6 @@ module HighScoreService
       Hearth::AuthSchemes::Anonymous.new
     ].freeze
 
-    class Resolver
-
-      def resolve(params)
-        options = []
-        case params.operation_name
-        when :create_high_score
-          options << Hearth::AuthOption.new(scheme_id: 'smithy.api#noAuth')
-        when :delete_high_score
-          options << Hearth::AuthOption.new(scheme_id: 'smithy.api#noAuth')
-        when :get_high_score
-          options << Hearth::AuthOption.new(scheme_id: 'smithy.api#noAuth')
-        when :list_high_scores
-          options << Hearth::AuthOption.new(scheme_id: 'smithy.api#noAuth')
-        when :update_high_score
-          options << Hearth::AuthOption.new(scheme_id: 'smithy.api#noAuth')
-        else nil
-        end
-        options
-      end
-
-    end
+    Resolver = Hearth::AnonymousAuthResolver
   end
 end

@@ -46,7 +46,7 @@ module HighScoreService
       when 429 then 'TooManyRequestsError'
       when 431 then 'RequestHeaderFieldsTooLargeError'
       when 451 then 'UnavailableForLegalReasonsError'
-      when 500 then 'InternalServerErrorError'
+      when 500 then 'InternalServerError'
       when 501 then 'NotImplementedError'
       when 502 then 'BadGatewayError'
       when 503 then 'ServiceUnavailableError'
