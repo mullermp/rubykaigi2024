@@ -8,8 +8,7 @@
 # WARNING ABOUT GENERATED CODE
 
 module HighScoreService
-  class Client
-    include Hearth::ClientStubs
+  class Client < Hearth::Client
 
     def self.plugins: () -> Hearth::PluginList[Config]
 
@@ -26,6 +25,7 @@ module HighScoreService
         ?plugins: Hearth::PluginList[Config],
         ?retry_strategy: Hearth::_RetryStrategy,
         ?stub_responses: bool,
+        ?stubs: Hearth::Stubs,
         ?validate_input: bool
       ) -> void
 

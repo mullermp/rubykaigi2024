@@ -14,7 +14,7 @@ module HighScoreService
   module Middleware
 
     class CreateHighScore
-      def self.build(config, stubs)
+      def self.build(config)
         stack = Hearth::MiddlewareStack.new
         stack.use(Hearth::Middleware::Initialize)
         stack.use(Hearth::Middleware::Validate,
@@ -54,14 +54,14 @@ module HighScoreService
           client: config.http_client,
           stub_error_classes: [Stubs::UnprocessableEntityError],
           stub_data_class: Stubs::CreateHighScore,
-          stubs: stubs
+          stubs: config.stubs
         )
         stack
       end
     end
 
     class DeleteHighScore
-      def self.build(config, stubs)
+      def self.build(config)
         stack = Hearth::MiddlewareStack.new
         stack.use(Hearth::Middleware::Initialize)
         stack.use(Hearth::Middleware::Validate,
@@ -101,14 +101,14 @@ module HighScoreService
           client: config.http_client,
           stub_error_classes: [],
           stub_data_class: Stubs::DeleteHighScore,
-          stubs: stubs
+          stubs: config.stubs
         )
         stack
       end
     end
 
     class GetHighScore
-      def self.build(config, stubs)
+      def self.build(config)
         stack = Hearth::MiddlewareStack.new
         stack.use(Hearth::Middleware::Initialize)
         stack.use(Hearth::Middleware::Validate,
@@ -148,14 +148,14 @@ module HighScoreService
           client: config.http_client,
           stub_error_classes: [],
           stub_data_class: Stubs::GetHighScore,
-          stubs: stubs
+          stubs: config.stubs
         )
         stack
       end
     end
 
     class ListHighScores
-      def self.build(config, stubs)
+      def self.build(config)
         stack = Hearth::MiddlewareStack.new
         stack.use(Hearth::Middleware::Initialize)
         stack.use(Hearth::Middleware::Validate,
@@ -195,14 +195,14 @@ module HighScoreService
           client: config.http_client,
           stub_error_classes: [],
           stub_data_class: Stubs::ListHighScores,
-          stubs: stubs
+          stubs: config.stubs
         )
         stack
       end
     end
 
     class UpdateHighScore
-      def self.build(config, stubs)
+      def self.build(config)
         stack = Hearth::MiddlewareStack.new
         stack.use(Hearth::Middleware::Initialize)
         stack.use(Hearth::Middleware::Validate,
@@ -242,7 +242,7 @@ module HighScoreService
           client: config.http_client,
           stub_error_classes: [Stubs::UnprocessableEntityError],
           stub_data_class: Stubs::UpdateHighScore,
-          stubs: stubs
+          stubs: config.stubs
         )
         stack
       end

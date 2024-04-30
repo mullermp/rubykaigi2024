@@ -11,22 +11,14 @@ require 'stringio'
 
 module HighScoreService
   # Rails High Score example from their generator docs
-  class Client
-    include Hearth::ClientStubs
+  class Client < Hearth::Client
 
     # @api private
     @plugins = Hearth::PluginList.new
-
-    # @return [Hearth::PluginList]
-    def self.plugins
-      @plugins
-    end
-
     # @param [Hash] options
     #   Options used to construct an instance of {Config}
     def initialize(options = {})
-      @config = initialize_config(options)
-      @stubs = Hearth::Stubs.new
+      super(options, Config)
     end
 
     # @return [Config] config
@@ -60,7 +52,7 @@ module HighScoreService
       response_body = ::StringIO.new
       config = operation_config(options)
       input = Params::CreateHighScoreInput.build(params, context: 'params')
-      stack = HighScoreService::Middleware::CreateHighScore.build(config, @stubs)
+      stack = HighScoreService::Middleware::CreateHighScore.build(config)
       context = Hearth::Context.new(
         request: Hearth::HTTP::Request.new(uri: URI('')),
         response: Hearth::HTTP::Response.new(body: response_body),
@@ -96,7 +88,7 @@ module HighScoreService
       response_body = ::StringIO.new
       config = operation_config(options)
       input = Params::DeleteHighScoreInput.build(params, context: 'params')
-      stack = HighScoreService::Middleware::DeleteHighScore.build(config, @stubs)
+      stack = HighScoreService::Middleware::DeleteHighScore.build(config)
       context = Hearth::Context.new(
         request: Hearth::HTTP::Request.new(uri: URI('')),
         response: Hearth::HTTP::Response.new(body: response_body),
@@ -138,7 +130,7 @@ module HighScoreService
       response_body = ::StringIO.new
       config = operation_config(options)
       input = Params::GetHighScoreInput.build(params, context: 'params')
-      stack = HighScoreService::Middleware::GetHighScore.build(config, @stubs)
+      stack = HighScoreService::Middleware::GetHighScore.build(config)
       context = Hearth::Context.new(
         request: Hearth::HTTP::Request.new(uri: URI('')),
         response: Hearth::HTTP::Response.new(body: response_body),
@@ -179,7 +171,7 @@ module HighScoreService
       response_body = ::StringIO.new
       config = operation_config(options)
       input = Params::ListHighScoresInput.build(params, context: 'params')
-      stack = HighScoreService::Middleware::ListHighScores.build(config, @stubs)
+      stack = HighScoreService::Middleware::ListHighScores.build(config)
       context = Hearth::Context.new(
         request: Hearth::HTTP::Request.new(uri: URI('')),
         response: Hearth::HTTP::Response.new(body: response_body),
@@ -225,7 +217,7 @@ module HighScoreService
       response_body = ::StringIO.new
       config = operation_config(options)
       input = Params::UpdateHighScoreInput.build(params, context: 'params')
-      stack = HighScoreService::Middleware::UpdateHighScore.build(config, @stubs)
+      stack = HighScoreService::Middleware::UpdateHighScore.build(config)
       context = Hearth::Context.new(
         request: Hearth::HTTP::Request.new(uri: URI('')),
         response: Hearth::HTTP::Response.new(body: response_body),
@@ -241,32 +233,6 @@ module HighScoreService
       end
       context.logger.info("[#{context.invocation_id}] [#{self.class}#update_high_score] #{output.data}")
       output
-    end
-
-    private
-
-    def initialize_config(options)
-      client_interceptors = options.delete(:interceptors)
-      config = Config.new(**options)
-      config.validate!
-      Client.plugins.each { |p| p.call(config) }
-      config.plugins.each { |p| p.call(config) }
-      config.interceptors.concat(client_interceptors) if client_interceptors
-      config.validate!
-      config.freeze
-    end
-
-    def operation_config(options)
-      return @config if options.empty?
-
-      operation_plugins = options.delete(:plugins)
-      operation_interceptors = options.delete(:interceptors)
-      config = @config.merge(options)
-      config.validate!
-      operation_plugins.each { |p| p.call(config) } if operation_plugins
-      config.interceptors.concat(operation_interceptors) if operation_interceptors
-      config.validate!
-      config.freeze
     end
   end
 end
