@@ -15,7 +15,6 @@ module HighScoreService
       def self.build(http_req, input:)
         http_req.http_method = 'POST'
         http_req.append_path('/high_scores')
-
         http_req.headers['Content-Type'] = 'application/json'
         data = {}
         data[:high_score] = Builders::HighScoreParams.build(input[:high_score]) unless input[:high_score].nil?
@@ -78,7 +77,6 @@ module HighScoreService
             id: Hearth::HTTP.uri_escape(input[:id].to_s)
           )
         )
-
         http_req.headers['Content-Type'] = 'application/json'
         data = {}
         data[:high_score] = Builders::HighScoreParams.build(input[:high_score]) unless input[:high_score].nil?
