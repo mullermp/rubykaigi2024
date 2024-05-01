@@ -25,7 +25,7 @@ Running `smithy clean && smithy build` will build the SDK into a build folder us
 The SDK is powered by a core dependency called `hearth`. It is currently in pre-release status.
 
 ```
-gem install hearth -v 1.0.0.pre2
+gem install hearth -v 1.0.0.pre3
 ```
 
 ## Run IRB
